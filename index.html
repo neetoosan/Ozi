@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>A Special Quest for Praise 💖</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js Global Script Tag (Works both on http:// server and file:// protocol!) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <!-- 3D Canvas -->
+  <div id="canvas-container"></div>
+
+  <!-- Audio / Start Overlay -->
+  <div id="start-overlay" class="overlay-screen active">
+    <div class="glass-card start-card">
+      <div class="heart-pulse-icon">💖</div>
+      <h1 class="glow-title">For Praise</h1>
+      <p class="subtitle">An Interactive 3D Journey Made With All My Love</p>
+      <div class="instructions-box">
+        <p>🎮 <strong>Controls:</strong></p>
+        <p>• <strong>Desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>Arrows</kbd> to move, <kbd>Space</kbd> to Jump!</p>
+        <p>• <strong>Mobile:</strong> Use touch joystick to move, <strong>Double-Tap</strong> to Jump!</p>
+        <p>✨ <strong>Goal:</strong> Collect all 5 glowing Hearts of Praise to unlock the secret love letter!</p>
+      </div>
+      <button id="start-btn" class="primary-btn glow-btn" type="button">
+        <span>Begin Quest</span> ✨
+      </button>
+    </div>
+  </div>
+
+  <!-- HUD Overlay -->
+  <div id="hud" class="hud-container hidden">
+    <!-- Heart Progress Counter -->
+    <div class="glass-pill hearts-counter">
+      <span class="heart-icon">💖</span>
+      <span id="collected-count">0</span> / <span id="total-count">5</span>
+      <span class="pill-label">Hearts Collected</span>
+    </div>
+
+    <!-- Music Toggle -->
+    <button id="music-btn" class="glass-pill icon-btn" title="Toggle Music" type="button">
+      <span id="music-icon">🎵</span>
+    </button>
+  </div>
+
+  <!-- Dialogue / Reason Card Modal -->
+  <div id="card-modal" class="modal-overlay hidden">
+    <div class="glass-card modal-card animate-pop">
+      <button class="close-modal-btn" id="close-card-btn" type="button">&times;</button>
+      <div class="card-badge" id="card-number">Heart #1</div>
+      <div class="card-icon" id="card-emoji">✨</div>
+      <h2 class="card-title" id="card-heading">A Special Reason</h2>
+      <p class="card-body" id="card-text">Your smile lights up even the darkest days...</p>
+      <button id="card-continue-btn" class="primary-btn" type="button">Continue Exploring 🌸</button>
+    </div>
+  </div>
+
+  <!-- Level Transition Modal -->
+  <div id="transition-modal" class="modal-overlay hidden">
+    <div class="glass-card modal-card animate-fade">
+      <div class="sparkle-crown">👑</div>
+      <h2 class="glow-title" id="trans-title">All Hearts Found!</h2>
+      <p class="card-body" id="trans-text">The stars in the sky are calling your name...</p>
+      <button id="trans-btn" class="primary-btn glow-btn" type="button">Reach for the Stars ✨</button>
+    </div>
+  </div>
+
+  <!-- Final Proposal Modal -->
+  <div id="proposal-modal" class="modal-overlay hidden">
+    <div class="glass-card proposal-card animate-zoom">
+      <div class="floating-hearts-bg"></div>
+      <div class="big-heart-glow">💖</div>
+      <h1 class="proposal-title">Praise, My Dearest</h1>
+      <div class="love-letter-paper">
+        <p class="letter-text">
+          From the moment you entered my life, everything became brighter, warmer, and endlessly beautiful.
+        </p>
+        <p class="letter-text">
+          You are my favorite thought every morning and my sweetest dream every night. Every beat of my heart belongs to you.
+        </p>
+        <p class="letter-highlight">
+          Will you make me the happiest person in the world and be mine?
+        </p>
+      </div>
+
+      <div class="proposal-actions">
+        <button id="yes-btn" class="primary-btn glow-btn yes-btn" type="button">
+          YES! 💖 Forever & Always
+        </button>
+        <button id="no-btn" class="secondary-btn no-btn" type="button">
+          No 😜
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Celebration Screen -->
+  <div id="celebration-overlay" class="modal-overlay hidden">
+    <div class="glass-card celebration-card animate-pop">
+      <div class="crown-icon">👑</div>
+      <h1 class="rainbow-title">I Love You, Praise! 💖</h1>
+      <p class="celebration-subtitle">You just made me the happiest person in the universe! ✨</p>
+      <div class="fireworks-badge">🎆 Forever & Always Yours 🎆</div>
+      <button id="replay-btn" class="primary-btn glow-btn" type="button" style="margin-top: 20px;">
+        Relive The Magic 🌸
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Controls (Virtual Joystick) -->
+  <div id="touch-controls" class="touch-controls hidden">
+    <div id="joystick-zone">
+      <div id="joystick-base">
+        <div id="joystick-handle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Synthesizer & Game Scripts -->
+  <script src="audio.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
