@@ -1,14 +1,15 @@
 /**
- * Main 3D Game Engine for Praise's Love Website
+ * Main 3D Game Engine for Ozioma Goodness Ezenyi's Love Website
  * Emotion-Driven Dynamic Experience + WhatsApp Response Integration
  * Works globally with THREE.js and soundEngine
  */
 
 // ============================================================================
-// Personalization Configuration for Praise (20 Reasons & 4 Love Letters)
+// Personalization Configuration for Ozioma Goodness Ezenyi (20 Reasons & 4 Love Letters)
 // ============================================================================
 const CONFIG = {
-  crushName: "Praise",
+  crushFullName: "Ozioma Goodness Ezenyi",
+  crushName: "Ozioma",
   whatsappNumber: "2349055401776",
   moods: {
     // 💖 1. ROMANTIC & DREAMY
@@ -27,39 +28,39 @@ const CONFIG = {
           number: "Heart #1",
           heading: "Your Starlight Eyes ✨",
           emoji: "💖",
-          text: "Praise, every time I look into your eyes, the whole universe fades into the background and all I see is pure magic."
+          text: "Ozioma, every time I look into your eyes, the whole universe fades into the background and all I see is pure magic."
         },
         {
           number: "Heart #2",
           heading: "Your Gentle Warmth 🌸",
           emoji: "🌹",
-          text: "The kindness and tenderness in your heart make the world feel softer, warmer, and endlessly beautiful."
+          text: "The kindness and tenderness in your heart, Ozioma Goodness, make the world feel softer, warmer, and endlessly beautiful."
         },
         {
           number: "Heart #3",
           heading: "Our Shared Moments 🎶",
           emoji: "💫",
-          text: "Every conversation, every quiet second, and every laugh with you is a memory I hold dear to my heart."
+          text: "Every conversation, every quiet second, and every laugh with you, Ozi, is a memory I hold dear to my heart."
         },
         {
           number: "Heart #4",
           heading: "Your Enchanting Grace 👑",
           emoji: "🦋",
-          text: "You carry yourself with a natural grace and sweetness that captivates me more and more every single day."
+          text: "You carry yourself with such natural elegance, Goodness, and a sweetness that captivates me more and more every day."
         },
         {
           number: "Heart #5",
           heading: "My Favorite Dream 💎",
           emoji: "🎁",
-          text: "Praise, you are the dream I never want to wake up from. Loving you is the easiest and most natural thing in the world."
+          text: "Ozioma, you are the dream I never want to wake up from. Loving you is the easiest and most natural thing in the world."
         }
       ],
       letter: {
-        p1: "Praise, my love for you runs deeper than the oceans and higher than the stars in this sky.",
+        p1: "Ozioma Goodness Ezenyi, my love for you runs deeper than the oceans and higher than all the stars in this sky.",
         p2: "You are the poetry in my thoughts and the gentle rhythm in my heartbeat. Walking through life with you by my side would be my greatest blessing.",
-        highlight: "Will you make me the happiest person in the universe and be mine forever? 💖"
+        highlight: "Will you make me the happiest person in the universe and be mine forever, Ozioma? 💖"
       },
-      whatsappMessage: "Hey! 💖 I just finished your 3D Quest and found all 5 hearts! My mood today is Romantic & Dreamy ✨ And my answer is YES! Forever & always! 🥰"
+      whatsappMessage: "Hey! 💖 I just finished your 3D Quest and found all 5 hearts! My mood today is Romantic & Dreamy ✨ And my answer is YES! Forever & always! 🥰 — Ozioma Goodness"
     },
 
     // 🌸 2. STRESSED / NEEDS COMFORT & WARMTH
@@ -78,39 +79,39 @@ const CONFIG = {
           number: "Heart #1",
           heading: "Take a Deep Breath 🍃",
           emoji: "🌸",
-          text: "Praise, pause for a second and breathe. You carry so much with grace, but it's okay to let go and just rest."
+          text: "Ozioma, pause for a second and breathe. You carry so much with grace, but it's okay to let go and just rest."
         },
         {
           number: "Heart #2",
           heading: "You Are More Than Enough ☕",
           emoji: "🧸",
-          text: "On tough days, never forget how strong, capable, and wonderfully made you are. I believe in you always."
+          text: "On tough days, never forget how strong, capable, and wonderfully made you are, Goodness. I believe in you always."
         },
         {
           number: "Heart #3",
           heading: "A Safe Harbor for You 🏡",
           emoji: "🕯️",
-          text: "Whenever the world feels loud or overwhelming, my heart will always be a warm, quiet, safe place for you."
+          text: "Whenever the world feels loud or overwhelming, Ozi, my heart will always be a warm, quiet, safe place for you."
         },
         {
           number: "Heart #4",
           heading: "Your Soft Heart 🕊️",
           emoji: "🌷",
-          text: "Your sensitivity and empathy are your superpowers. Don't let heavy days dim the gentle light inside you."
+          text: "Your sensitivity and empathy are your superpowers, Ozioma. Don't let heavy days dim the gentle light inside you."
         },
         {
           number: "Heart #5",
           heading: "I Am Here For You 🤝",
           emoji: "🤍",
-          text: "Through the storms, rainy days, or sunshine, you will never have to walk alone. I'm right beside you."
+          text: "Through the storms, rainy days, or sunshine, Ozioma Goodness, you will never have to walk alone. I'm right beside you."
         }
       ],
       letter: {
-        p1: "Praise, you work so hard and give so much love to the world, but today I want you to feel deeply cherished.",
+        p1: "Ozioma Goodness Ezenyi, you work so hard and give so much love to the world, but today I want you to feel deeply cherished.",
         p2: "I want to be the one who brings you peace after a long day, the one who listens to your quietest thoughts, and holds your hand through everything.",
-        highlight: "Will you let me love, protect, and stand by your side forever? 🌸"
+        highlight: "Will you let me love, protect, and stand by your side forever, Ozioma? 🌸"
       },
-      whatsappMessage: "Hey! 🌸 I just finished your 3D Quest and found all 5 hearts! I was feeling a bit stressed/needed comfort, and your messages warmed my heart so much. My answer is YES! 🤍"
+      whatsappMessage: "Hey! 🌸 I just finished your 3D Quest and found all 5 hearts! I was feeling a bit stressed/needed comfort, and your messages warmed my heart so much. My answer is YES! 🤍 — Ozioma"
     },
 
     // 🌟 3. JOYFUL & ENERGETIC
@@ -129,39 +130,39 @@ const CONFIG = {
           number: "Heart #1",
           heading: "Your Electric Energy ⚡",
           emoji: "🌟",
-          text: "Praise, your bright spirit and vibrant energy make the whole world feel alive, colorful, and fun!"
+          text: "Ozioma, your bright spirit and vibrant energy make the whole world feel alive, colorful, and fun!"
         },
         {
           number: "Heart #2",
           heading: "Sunshine in Human Form ☀️",
           emoji: "🌻",
-          text: "Your radiant smile is contagious! The moment you walk into a room, everyone's day gets ten times better."
+          text: "Your radiant smile is contagious, Goodness! The moment you walk into a room, everyone's day gets ten times better."
         },
         {
           number: "Heart #3",
           heading: "Your Inspiring Passion 🔥",
           emoji: "🎯",
-          text: "Watching you get excited about things you love is one of my favorite sights in the world. You inspire me!"
+          text: "Watching you get excited about things you love is one of my favorite sights in the world, Ozi. You inspire me!"
         },
         {
           number: "Heart #4",
           heading: "Endless Good Vibes 🌈",
           emoji: "🎈",
-          text: "Being around you is like an adventure full of warmth, laughter, and unforgettable moments."
+          text: "Being around you, Ozioma, is like an adventure full of warmth, laughter, and unforgettable moments."
         },
         {
           number: "Heart #5",
           heading: "You are Pure Gold 👑",
           emoji: "✨",
-          text: "Praise, there is nobody on this planet quite like you. You shine like the brightest star in the sky!"
+          text: "Ozioma Goodness Ezenyi, there is nobody on this planet quite like you. You shine like the brightest star in the sky!"
         }
       ],
       letter: {
-        p1: "Praise, every single moment with you feels like an exciting adventure filled with pure sunshine!",
-        p2: "Your joyful laugh is my favorite melody, and your happiness means everything to me. I want to celebrate you every single day.",
-        highlight: "Let's make countless magical memories together. Will you be mine? 🌟"
+        p1: "Ozioma, every single moment with you feels like an exciting adventure filled with pure sunshine!",
+        p2: "Your joyful laugh is my favorite melody, and your happiness means everything to me. I want to celebrate you every single day, Goodness.",
+        highlight: "Let's make countless magical memories together. Will you be mine forever, Ozioma? 🌟"
       },
-      whatsappMessage: "Hey! 🌟 I just completed your 3D Quest! I'm feeling super joyful & energetic today! Loved every single reason, and my answer is YES! ✨💖"
+      whatsappMessage: "Hey! 🌟 I just completed your 3D Quest! I'm feeling super joyful & energetic today! Loved every single reason, and my answer is YES! ✨💖 — Ozioma Goodness Ezenyi"
     },
 
     // 😜 4. PLAYFUL & MISCHIEVOUS
@@ -180,39 +181,39 @@ const CONFIG = {
           number: "Heart #1",
           heading: "Certified Heart Stealer 🕵️‍♀️",
           emoji: "😜",
-          text: "Excuse me Praise, but you owe me a heart—because you stole mine the very first second I saw you!"
+          text: "Excuse me Ozioma, but you owe me a heart—because you stole mine the very first second I saw you!"
         },
         {
           number: "Heart #2",
           heading: "Our Witty Banter 💬",
           emoji: "🤹‍♀️",
-          text: "I love our teasing, playful jokes, and how you always keep me on my toes with your quick wit."
+          text: "I love our teasing, playful jokes, Goodness, and how you always keep me on my toes with your quick wit."
         },
         {
           number: "Heart #3",
           heading: "Dangerously Cute 🥰",
           emoji: "🎀",
-          text: "It honestly should be illegal to look that cute while also being so ridiculously smart and funny."
+          text: "It honestly should be illegal to look that cute, Ozi, while also being so ridiculously smart and funny."
         },
         {
           number: "Heart #4",
           heading: "My Favorite Distraction 📱",
           emoji: "🎮",
-          text: "I could be doing a million important things, but thinking about you always wins effortlessly!"
+          text: "I could be doing a million important things, but thinking about you, Ozioma, always wins effortlessly!"
         },
         {
           number: "Heart #5",
           heading: "10/10 Would Choose You Again 🏆",
           emoji: "🎉",
-          text: "If I had a million lifetimes, I'd still spend every single one chasing after your heart, Praise!"
+          text: "If I had a million lifetimes, I'd still spend every single one chasing after your heart, Ozioma Goodness!"
         }
       ],
       letter: {
-        p1: "Praise, you've completely conquered my thoughts, and honestly, I wouldn't have it any other way!",
-        p2: "You bring so much fun, color, and laughter into my world. There's no escaping this—we're an unbeatable team.",
-        highlight: "Resistance is futile, Praise! Will you say YES and be my partner-in-crime forever? 😜💖"
+        p1: "Ozioma Goodness Ezenyi, you've completely conquered my thoughts, and honestly, I wouldn't have it any other way!",
+        p2: "You bring so much fun, color, and laughter into my world. There's no escaping this—we're an unbeatable team, Ozi.",
+        highlight: "Resistance is futile, Ozioma! Will you say YES and be my partner-in-crime forever? 😜💖"
       },
-      whatsappMessage: "Hey! 😜 I just finished your 3D Quest and caught all 5 hearts! You're the real heart stealer here haha! My answer is YES! Partner in crime forever! 🎉💖"
+      whatsappMessage: "Hey! 😜 I just finished your 3D Quest and caught all 5 hearts! You're the real heart stealer here haha! My answer is YES! Partner in crime forever! 🎉💖 — Ozioma"
     }
   }
 };
@@ -767,6 +768,7 @@ function create3DFirework() {
 function setupEventListeners() {
   window.addEventListener('resize', onWindowResize);
 
+  // Desktop Keyboard Listener (WASD + Space for Jump)
   window.addEventListener('keydown', (e) => {
     if (!state.isGameActive || state.isModalOpen) return;
     switch (e.key.toLowerCase()) {
@@ -790,6 +792,7 @@ function setupEventListeners() {
     }
   });
 
+  // Mobile Double Tap Listener
   window.addEventListener('touchstart', (e) => {
     if (!state.isGameActive || state.isModalOpen || state.stage !== 1) return;
 
@@ -919,7 +922,7 @@ function setupEventListeners() {
     noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); dodgeNoBtn(); });
   }
 
-  // YES! Proposal Button Click -> Open WhatsApp with Mood Message
+  // YES! Proposal Button Click -> Open WhatsApp with Mood Message for Ozioma
   const yesBtn = document.getElementById('yes-btn');
   if (yesBtn) {
     yesBtn.addEventListener('click', () => {
