@@ -1,43 +1,215 @@
 /**
  * Main 3D Game Engine for Praise's Love Website
+ * Emotion-Driven Dynamic Experience
  * Works globally with THREE.js and soundEngine
  */
 
-// Personalization Configuration for Praise
+// ============================================================================
+// Personalization Configuration for Praise (20 Reasons & 4 Love Letters)
+// ============================================================================
 const CONFIG = {
   crushName: "Praise",
-  reasons: [
-    {
-      number: "Heart #1",
-      heading: "Your Sunshine Smile ☀️",
-      emoji: "✨",
-      text: "Praise, your smile has a magical way of lighting up any room and turning the greyest day into pure sunshine."
-    },
-    {
-      number: "Heart #2",
-      heading: "Your Warmth & Kindness 🌸",
+  moods: {
+    // 💖 1. ROMANTIC & DREAMY
+    romantic: {
+      name: "Romantic",
       emoji: "💖",
-      text: "Your gentle heart, kindness to everyone around you, and sweet soul inspire me every single day."
+      skyColor: 0x14052b,
+      fogColor: 0x1c093a,
+      ambientColor: 0xffd5e5,
+      dirLightColor: 0xffe6f0,
+      rimColor: 0xff4d8d,
+      particleColor: 0xff75a0,
+      particleSize: 0.45,
+      reasons: [
+        {
+          number: "Heart #1",
+          heading: "Your Starlight Eyes ✨",
+          emoji: "💖",
+          text: "Praise, every time I look into your eyes, the whole universe fades into the background and all I see is pure magic."
+        },
+        {
+          number: "Heart #2",
+          heading: "Your Gentle Warmth 🌸",
+          emoji: "🌹",
+          text: "The kindness and tenderness in your heart make the world feel softer, warmer, and endlessly beautiful."
+        },
+        {
+          number: "Heart #3",
+          heading: "Our Shared Moments 🎶",
+          emoji: "💫",
+          text: "Every conversation, every quiet second, and every laugh with you is a memory I hold dear to my heart."
+        },
+        {
+          number: "Heart #4",
+          heading: "Your Enchanting Grace 👑",
+          emoji: "🦋",
+          text: "You carry yourself with a natural grace and sweetness that captivates me more and more every single day."
+        },
+        {
+          number: "Heart #5",
+          heading: "My Favorite Dream 💎",
+          emoji: "🎁",
+          text: "Praise, you are the dream I never want to wake up from. Loving you is the easiest and most natural thing in the world."
+        }
+      ],
+      letter: {
+        p1: "Praise, my love for you runs deeper than the oceans and higher than the stars in this sky.",
+        p2: "You are the poetry in my thoughts and the gentle rhythm in my heartbeat. Walking through life with you by my side would be my greatest blessing.",
+        highlight: "Will you make me the happiest person in the universe and be mine forever? 💖"
+      }
     },
-    {
-      number: "Heart #3",
-      heading: "Your Beautiful Laughter 🎶",
+
+    // 🌸 2. STRESSED / NEEDS COMFORT & WARMTH
+    comfort: {
+      name: "Need Comfort",
+      emoji: "🌸",
+      skyColor: 0x220c1e,
+      fogColor: 0x2d1228,
+      ambientColor: 0xffe4d6,
+      dirLightColor: 0xffeedb,
+      rimColor: 0xff9966,
+      particleColor: 0xffc4a8,
+      particleSize: 0.5,
+      reasons: [
+        {
+          number: "Heart #1",
+          heading: "Take a Deep Breath 🍃",
+          emoji: "🌸",
+          text: "Praise, pause for a second and breathe. You carry so much with grace, but it's okay to let go and just rest."
+        },
+        {
+          number: "Heart #2",
+          heading: "You Are More Than Enough ☕",
+          emoji: "🧸",
+          text: "On tough days, never forget how strong, capable, and wonderfully made you are. I believe in you always."
+        },
+        {
+          number: "Heart #3",
+          heading: "A Safe Harbor for You 🏡",
+          emoji: "🕯️",
+          text: "Whenever the world feels loud or overwhelming, my heart will always be a warm, quiet, safe place for you."
+        },
+        {
+          number: "Heart #4",
+          heading: "Your Soft Heart 🕊️",
+          emoji: "🌷",
+          text: "Your sensitivity and empathy are your superpowers. Don't let heavy days dim the gentle light inside you."
+        },
+        {
+          number: "Heart #5",
+          heading: "I Am Here For You 🤝",
+          emoji: "🤍",
+          text: "Through the storms, rainy days, or sunshine, you will never have to walk alone. I'm right beside you."
+        }
+      ],
+      letter: {
+        p1: "Praise, you work so hard and give so much love to the world, but today I want you to feel deeply cherished.",
+        p2: "I want to be the one who brings you peace after a long day, the one who listens to your quietest thoughts, and holds your hand through everything.",
+        highlight: "Will you let me love, protect, and stand by your side forever? 🌸"
+      }
+    },
+
+    // 🌟 3. JOYFUL & ENERGETIC
+    joyful: {
+      name: "Joyful",
       emoji: "🌟",
-      text: "Hearing you laugh is easily my favorite sound in the entire world. It puts an instant smile on my face."
+      skyColor: 0x1f0b3d,
+      fogColor: 0x29104f,
+      ambientColor: 0xfff0cc,
+      dirLightColor: 0xfff6dd,
+      rimColor: 0xffcc00,
+      particleColor: 0xffd700,
+      particleSize: 0.45,
+      reasons: [
+        {
+          number: "Heart #1",
+          heading: "Your Electric Energy ⚡",
+          emoji: "🌟",
+          text: "Praise, your bright spirit and vibrant energy make the whole world feel alive, colorful, and fun!"
+        },
+        {
+          number: "Heart #2",
+          heading: "Sunshine in Human Form ☀️",
+          emoji: "🌻",
+          text: "Your radiant smile is contagious! The moment you walk into a room, everyone's day gets ten times better."
+        },
+        {
+          number: "Heart #3",
+          heading: "Your Inspiring Passion 🔥",
+          emoji: "🎯",
+          text: "Watching you get excited about things you love is one of my favorite sights in the world. You inspire me!"
+        },
+        {
+          number: "Heart #4",
+          heading: "Endless Good Vibes 🌈",
+          emoji: "🎈",
+          text: "Being around you is like an adventure full of warmth, laughter, and unforgettable moments."
+        },
+        {
+          number: "Heart #5",
+          heading: "You are Pure Gold 👑",
+          emoji: "✨",
+          text: "Praise, there is nobody on this planet quite like you. You shine like the brightest star in the sky!"
+        }
+      ],
+      letter: {
+        p1: "Praise, every single moment with you feels like an exciting adventure filled with pure sunshine!",
+        p2: "Your joyful laugh is my favorite melody, and your happiness means everything to me. I want to celebrate you every single day.",
+        highlight: "Let's make countless magical memories together. Will you be mine? 🌟"
+      }
     },
-    {
-      number: "Heart #4",
-      heading: "Your Grace & Charm 👑",
-      emoji: "🦋",
-      text: "You carry yourself with such incredible elegance and authenticity. Being near you feels like magic."
-    },
-    {
-      number: "Heart #5",
-      heading: "You are One of a Kind 💎",
-      emoji: "🎁",
-      text: "Everything about you—your intelligence, humor, and soul—makes you truly extraordinary and unforgettable."
+
+    // 😜 4. PLAYFUL & MISCHIEVOUS
+    playful: {
+      name: "Playful",
+      emoji: "😜",
+      skyColor: 0x09142f,
+      fogColor: 0x0f1c3f,
+      ambientColor: 0xd4f0ff,
+      dirLightColor: 0xe6f7ff,
+      rimColor: 0x00d4ff,
+      particleColor: 0xff3df2,
+      particleSize: 0.5,
+      reasons: [
+        {
+          number: "Heart #1",
+          heading: "Certified Heart Stealer 🕵️‍♀️",
+          emoji: "😜",
+          text: "Excuse me Praise, but you owe me a heart—because you stole mine the very first second I saw you!"
+        },
+        {
+          number: "Heart #2",
+          heading: "Our Witty Banter 💬",
+          emoji: "🤹‍♀️",
+          text: "I love our teasing, playful jokes, and how you always keep me on my toes with your quick wit."
+        },
+        {
+          number: "Heart #3",
+          heading: "Dangerously Cute 🥰",
+          emoji: "🎀",
+          text: "It honestly should be illegal to look that cute while also being so ridiculously smart and funny."
+        },
+        {
+          number: "Heart #4",
+          heading: "My Favorite Distraction 📱",
+          emoji: "🎮",
+          text: "I could be doing a million important things, but thinking about you always wins effortlessly!"
+        },
+        {
+          number: "Heart #5",
+          heading: "10/10 Would Choose You Again 🏆",
+          emoji: "🎉",
+          text: "If I had a million lifetimes, I'd still spend every single one chasing after your heart, Praise!"
+        }
+      ],
+      letter: {
+        p1: "Praise, you've completely conquered my thoughts, and honestly, I wouldn't have it any other way!",
+        p2: "You bring so much fun, color, and laughter into my world. There's no escaping this—we're an unbeatable team.",
+        highlight: "Resistance is futile, Praise! Will you say YES and be my partner-in-crime forever? 😜💖"
+      }
     }
-  ]
+  }
 };
 
 // Island Configurations (x, y, z, radius)
@@ -59,6 +231,7 @@ const connections = [
 
 // Game State
 const state = {
+  currentMood: 'romantic',
   collectedHearts: 0,
   totalHearts: 5,
   collectedSet: new Set(),
@@ -77,6 +250,7 @@ const state = {
 
 // Three.js Core Variables
 let scene, camera, renderer, clock;
+let ambientLight, dirLight, rimLight;
 let player, playerLight;
 let collectibles = [];
 let islands = [];
@@ -131,8 +305,8 @@ function init() {
 
   // 1. Scene
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0f051d);
-  scene.fog = new THREE.FogExp2(0x1a0933, 0.022);
+  scene.background = new THREE.Color(CONFIG.moods.romantic.skyColor);
+  scene.fog = new THREE.FogExp2(CONFIG.moods.romantic.fogColor, 0.022);
 
   // 2. Camera
   camera = new THREE.PerspectiveCamera(
@@ -164,7 +338,7 @@ function init() {
   // 6. Create Player Star Avatar
   createPlayer();
 
-  // 7. Ambient Particle Stars & Floating Hearts
+  // 7. Ambient Particle Stars & Floating Elements
   createAmbientParticles();
 
   // 8. Event Listeners
@@ -176,10 +350,12 @@ function init() {
 
 // Lighting Setup
 function setupLighting() {
-  const ambientLight = new THREE.AmbientLight(0xffd5e5, 0.7);
+  const m = CONFIG.moods[state.currentMood];
+
+  ambientLight = new THREE.AmbientLight(m.ambientColor, 0.75);
   scene.add(ambientLight);
 
-  const dirLight = new THREE.DirectionalLight(0xffe6f0, 1.2);
+  dirLight = new THREE.DirectionalLight(m.dirLightColor, 1.2);
   dirLight.position.set(20, 40, 20);
   dirLight.castShadow = true;
   dirLight.shadow.mapSize.width = 1024;
@@ -193,7 +369,7 @@ function setupLighting() {
   dirLight.shadow.camera.bottom = -d;
   scene.add(dirLight);
 
-  const rimLight = new THREE.DirectionalLight(0xff4d8d, 0.8);
+  rimLight = new THREE.DirectionalLight(m.rimColor, 0.85);
   rimLight.position.set(-20, 10, -20);
   scene.add(rimLight);
 }
@@ -254,7 +430,7 @@ function createFloatingIsland(x, y, z, radius) {
   group.add(pLight);
 
   scene.add(group);
-  islands.push({ group, radius, x, y, z });
+  islands.push({ group, radius, x, y, z, light: pLight });
 }
 
 function createSteppingStones() {
@@ -388,29 +564,62 @@ function createPlayer() {
 }
 
 function createAmbientParticles() {
-  const particleCount = 200;
+  // Clear previous particle systems
+  particleSystems.forEach(ps => scene.remove(ps));
+  particleSystems = [];
+
+  const m = CONFIG.moods[state.currentMood];
+  const particleCount = 220;
   const geo = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount * 3; i += 3) {
     positions[i] = (Math.random() - 0.5) * 80;
-    positions[i + 1] = Math.random() * 30 + 1;
+    positions[i + 1] = Math.random() * 32 + 1;
     positions[i + 2] = (Math.random() - 0.5) * 80;
   }
 
   geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
   const mat = new THREE.PointsMaterial({
-    size: 0.4,
-    color: 0xffb8d4,
+    size: m.particleSize || 0.45,
+    color: m.particleColor,
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.75,
     blending: THREE.AdditiveBlending
   });
 
   const pSystem = new THREE.Points(geo, mat);
   scene.add(pSystem);
   particleSystems.push(pSystem);
+}
+
+// Apply Mood Theme to 3D World in Real-Time
+function applyMoodTheme(moodKey) {
+  state.currentMood = moodKey;
+  const m = CONFIG.moods[moodKey] || CONFIG.moods.romantic;
+
+  if (scene) {
+    scene.background = new THREE.Color(m.skyColor);
+    scene.fog = new THREE.FogExp2(m.fogColor, 0.022);
+  }
+
+  if (ambientLight) ambientLight.color.setHex(m.ambientColor);
+  if (dirLight) dirLight.color.setHex(m.dirLightColor);
+  if (rimLight) rimLight.color.setHex(m.rimColor);
+
+  createAmbientParticles();
+
+  // Update HUD badge
+  const hudEmoji = document.getElementById('hud-mood-emoji');
+  if (hudEmoji) hudEmoji.textContent = m.emoji;
+  const hudText = document.getElementById('hud-mood-text');
+  if (hudText) hudText.textContent = m.name;
+
+  // Update sound engine mood
+  if (window.soundEngine) {
+    window.soundEngine.setMood(moodKey);
+  }
 }
 
 // Trigger Jump Helper Action
@@ -426,6 +635,7 @@ function triggerPlayerJump() {
 
 function triggerCitadelFinale() {
   state.stage = 2;
+  const m = CONFIG.moods[state.currentMood];
 
   const citadelGroup = new THREE.Group();
   citadelGroup.position.set(0, 1.2, -12);
@@ -469,6 +679,14 @@ function triggerCitadelFinale() {
   citadelGroup.add(cLight);
 
   scene.add(citadelGroup);
+
+  // Populate dynamic proposal love letter
+  const letterP1 = document.getElementById('letter-para-1');
+  if (letterP1) letterP1.textContent = m.letter.p1;
+  const letterP2 = document.getElementById('letter-para-2');
+  if (letterP2) letterP2.textContent = m.letter.p2;
+  const letterHl = document.getElementById('letter-highlight-text');
+  if (letterHl) letterHl.textContent = m.letter.highlight;
 
   smoothCameraMoveTo({ x: 0, y: 12, z: 4 }, { x: 0, y: 4, z: -12 }, 2500, () => {
     document.getElementById('proposal-modal').classList.remove('hidden');
@@ -528,7 +746,7 @@ function create3DFirework() {
 
   geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-  const colors = [0xff4d8d, 0xffd700, 0xb19ffb, 0xff75a0];
+  const colors = [0xff4d8d, 0xffd700, 0xb19ffb, 0xff75a0, 0x00d4ff];
   const mat = new THREE.PointsMaterial({
     size: 0.5,
     color: colors[Math.floor(Math.random() * colors.length)],
@@ -547,6 +765,7 @@ function create3DFirework() {
 function setupEventListeners() {
   window.addEventListener('resize', onWindowResize);
 
+  // Desktop Keyboard Listener (WASD + Space for Jump)
   window.addEventListener('keydown', (e) => {
     if (!state.isGameActive || state.isModalOpen) return;
     switch (e.key.toLowerCase()) {
@@ -587,6 +806,19 @@ function setupEventListeners() {
     state.lastTouchTime = now;
   }, { passive: true });
 
+  // Mood Selector Cards Click Handler
+  const moodCards = document.querySelectorAll('.mood-card');
+  moodCards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.soundEngine) window.soundEngine.playClickSFX();
+      moodCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      const selectedMood = card.getAttribute('data-mood');
+      applyMoodTheme(selectedMood);
+    });
+  });
+
   // Dedicated Mobile Jump Button Event Listener
   const mobileJumpBtn = document.getElementById('mobile-jump-btn');
   if (mobileJumpBtn) {
@@ -599,6 +831,7 @@ function setupEventListeners() {
     mobileJumpBtn.addEventListener('touchstart', handleMobileJump);
   }
 
+  // Start Quest Action function
   const startQuestAction = () => {
     if (window.soundEngine) {
       window.soundEngine.playClickSFX();
@@ -894,7 +1127,9 @@ function collectHeart(item) {
   const countEl = document.getElementById('collected-count');
   if (countEl) countEl.textContent = state.collectedHearts;
 
-  const reason = CONFIG.reasons[item.index];
+  const currentMoodData = CONFIG.moods[state.currentMood] || CONFIG.moods.romantic;
+  const reason = currentMoodData.reasons[item.index];
+
   if (reason) {
     const numEl = document.getElementById('card-number');
     if (numEl) numEl.textContent = reason.number;

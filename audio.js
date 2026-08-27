@@ -1,6 +1,6 @@
 /**
  * Web Audio API Synthesizer for Praise's 3D Love Game
- * Provides procedural romantic background music and sound effects.
+ * Provides dynamic mood-based romantic background music and sound effects.
  */
 
 class SoundEngine {
@@ -10,6 +10,7 @@ class SoundEngine {
     this.isPlayingMusic = false;
     this.musicTimer = null;
     this.currentStep = 0;
+    this.currentMood = 'romantic';
   }
 
   // Initialize Web Audio Context on first user click/tap
@@ -29,6 +30,15 @@ class SoundEngine {
     }
   }
 
+  // Set Mood
+  setMood(mood) {
+    this.currentMood = mood;
+    if (this.isPlayingMusic) {
+      this.stopMusic();
+      this.startMusic();
+    }
+  }
+
   // Toggle Background Music
   toggleMusic() {
     if (this.isPlayingMusic) {
@@ -39,57 +49,92 @@ class SoundEngine {
     return this.isPlayingMusic;
   }
 
-  // Start Looping Romantic Synth Music
+  // Start Looping Romantic Synth Music based on Emotion Mood
   startMusic() {
     this.init();
     if (this.isPlayingMusic || !this.ctx) return;
     this.isPlayingMusic = true;
 
-    // Chord Progression (Frequencies in Hz)
-    // Cmaj7 -> Am7 -> Fmaj7 -> G7 (Dreamy Romance)
-    const chords = [
-      [261.63, 329.63, 392.00, 493.88], // Cmaj7 (C4, E4, G4, B4)
-      [220.00, 261.63, 329.63, 392.00], // Am7   (A3, C4, E4, G4)
-      [174.61, 220.00, 261.63, 329.63], // Fmaj7 (F3, A3, C4, E4)
-      [196.00, 246.94, 293.66, 349.23]  // G7    (G3, B3, D4, F4)
-    ];
+    // Mood-specific Chord Progressions (Hz)
+    const moodChords = {
+      // 💖 Romantic: Cmaj7 -> Am7 -> Fmaj7 -> G7
+      romantic: [
+        [261.63, 329.63, 392.00, 493.88], // Cmaj7
+        [220.00, 261.63, 329.63, 392.00], // Am7
+        [174.61, 220.00, 261.63, 329.63], // Fmaj7
+        [196.00, 246.94, 293.66, 349.23]  // G7
+      ],
+      // 🌸 Comfort / Stressed: Fmaj7 -> Em7 -> Dm7 -> Cmaj7 (Warm lullaby)
+      comfort: [
+        [174.61, 220.00, 261.63, 329.63], // Fmaj7
+        [164.81, 196.00, 246.94, 293.66], // Em7
+        [146.83, 174.61, 220.00, 261.63], // Dm7
+        [130.81, 164.81, 196.00, 246.94]  // Cmaj7
+      ],
+      // 🌟 Joyful: Gmaj7 -> Cmaj7 -> D7 -> Gmaj7 (Bright & uplifting)
+      joyful: [
+        [196.00, 246.94, 293.66, 369.99], // Gmaj7
+        [261.63, 329.63, 392.00, 523.25], // Cmaj7
+        [146.83, 220.00, 293.66, 369.99], // D7
+        [196.00, 246.94, 293.66, 493.88]  // Gmaj7
+      ],
+      // 😜 Playful: Am -> Dm -> E7 -> Am (Bouncy upbeat)
+      playful: [
+        [220.00, 261.63, 329.63, 440.00], // Am
+        [146.83, 220.00, 261.63, 349.23], // Dm
+        [164.81, 207.65, 246.94, 329.63], // E7
+        [220.00, 277.18, 329.63, 440.00]  // A
+      ]
+    };
 
     const playChordStep = () => {
       if (!this.isPlayingMusic || this.isMuted || !this.ctx) return;
 
       try {
+        const chords = moodChords[this.currentMood] || moodChords.romantic;
         const currentChord = chords[this.currentStep % chords.length];
         const now = this.ctx.currentTime;
 
-        // Play pad notes for the chord
+        // Sound characteristics per mood
+        const isComfort = this.currentMood === 'comfort';
+        const isJoyful = this.currentMood === 'joyful';
+        const isPlayful = this.currentMood === 'playful';
+
         currentChord.forEach((freq, index) => {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
 
-          osc.type = index === 0 ? 'sine' : 'triangle';
+          osc.type = isComfort ? 'sine' : (isPlayful && index > 1 ? 'triangle' : (index === 0 ? 'sine' : 'triangle'));
           osc.frequency.setValueAtTime(freq, now);
 
-          // Soft envelope
+          const peakVol = isComfort ? 0.04 : (isJoyful ? 0.06 : 0.05);
           gain.gain.setValueAtTime(0.001, now);
-          gain.gain.linearRampToValueAtTime(0.06, now + 0.8);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 2.8);
+          gain.gain.linearRampToValueAtTime(peakVol, now + (isComfort ? 1.0 : 0.6));
+          gain.gain.exponentialRampToValueAtTime(0.001, now + (isComfort ? 3.2 : 2.6));
 
           osc.connect(gain);
           gain.connect(this.ctx.destination);
 
           osc.start(now);
-          osc.stop(now + 3.0);
+          osc.stop(now + 3.4);
         });
 
-        // Play high melody note (arpeggiated chime)
-        const melodyFreq = currentChord[Math.floor(Math.random() * currentChord.length)] * 2;
-        this.playChimeNote(melodyFreq, now + 0.4, 0.03);
+        // Arpeggiated melody note
+        const melodyMultiplier = isJoyful ? 2.5 : 2;
+        const melodyFreq = currentChord[Math.floor(Math.random() * currentChord.length)] * melodyMultiplier;
+        this.playChimeNote(melodyFreq, now + 0.35, isComfort ? 0.02 : 0.035);
+
+        if (isPlayful) {
+          const secondFreq = currentChord[(this.currentStep + 1) % currentChord.length] * 2;
+          this.playChimeNote(secondFreq, now + 0.8, 0.025);
+        }
       } catch (err) {
         console.warn("Audio step error:", err);
       }
 
       this.currentStep++;
-      this.musicTimer = setTimeout(playChordStep, 2600);
+      const stepDuration = this.currentMood === 'comfort' ? 3000 : (this.currentMood === 'playful' ? 2200 : 2600);
+      this.musicTimer = setTimeout(playChordStep, stepDuration);
     };
 
     playChordStep();
@@ -222,5 +267,5 @@ class SoundEngine {
   }
 }
 
-// Export to global window scope so it works without module restrictions
+// Export to global window scope
 window.soundEngine = new SoundEngine();

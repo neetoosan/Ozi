@@ -66,7 +66,6 @@ html, body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Strict Unmount for Hidden Elements */
 .hidden {
   display: none !important;
   opacity: 0 !important;
@@ -81,29 +80,40 @@ html, body {
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: 28px;
-  padding: 36px 32px;
-  max-width: 480px;
+  padding: 32px 28px;
+  max-width: 520px;
   width: 100%;
   text-align: center;
   color: #fff;
   position: relative;
   z-index: 101;
   overflow: hidden;
+  max-height: 94vh;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar for Card */
+.glass-card::-webkit-scrollbar {
+  width: 6px;
+}
+.glass-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 117, 160, 0.5);
+  border-radius: 10px;
 }
 
 /* ==========================================================================
-   Start Screen Card
+   Start Screen Card & Emotion Selector
    ========================================================================== */
 .start-card {
-  max-width: 520px;
+  max-width: 540px;
   border: 1px solid rgba(255, 180, 210, 0.5);
-  background: radial-gradient(circle at top left, rgba(255, 117, 160, 0.3), rgba(35, 8, 54, 0.9));
+  background: radial-gradient(circle at top left, rgba(255, 117, 160, 0.3), rgba(35, 8, 54, 0.92));
 }
 
 .heart-pulse-icon {
-  font-size: 56px;
+  font-size: 50px;
   animation: pulseHeart 1.4s infinite ease-in-out;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   filter: drop-shadow(0 0 16px rgba(255, 77, 141, 0.8));
 }
 
@@ -114,30 +124,96 @@ html, body {
 
 .glow-title {
   font-family: var(--font-serif);
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 700;
   background: linear-gradient(135deg, #ffffff 0%, #ffb3d1 50%, #ffd700 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   letter-spacing: 0.5px;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 15px;
   color: #ffd0e3;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   font-weight: 300;
+}
+
+/* Emotion Grid */
+.mood-selector-container {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.mood-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mood-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  padding: 14px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.mood-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  border-color: rgba(255, 117, 160, 0.6);
+}
+
+.mood-card.active {
+  background: linear-gradient(135deg, rgba(255, 77, 141, 0.4), rgba(255, 117, 160, 0.2));
+  border-color: #ff4d8d;
+  box-shadow: 0 0 20px rgba(255, 77, 141, 0.5);
+  transform: scale(1.02);
+}
+
+.mood-icon {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.mood-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.mood-desc {
+  font-size: 11px;
+  color: #ffcbe0;
+  line-height: 1.3;
 }
 
 .instructions-box {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 28px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
   text-align: left;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.5;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -157,8 +233,8 @@ kbd {
   background: linear-gradient(135deg, #ff4d8d 0%, #ff75a0 50%, #ff2a70 100%);
   color: #fff;
   border: none;
-  padding: 16px 36px;
-  font-size: 18px;
+  padding: 15px 32px;
+  font-size: 17px;
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
@@ -241,41 +317,53 @@ kbd {
   pointer-events: none;
 }
 
+.hud-left-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
 .glass-pill {
-  background: rgba(35, 12, 55, 0.65);
+  background: rgba(35, 12, 55, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 180, 210, 0.4);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   border-radius: 50px;
-  padding: 10px 22px;
+  padding: 8px 18px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   pointer-events: auto;
 }
 
 .hearts-counter {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #ffffff;
+}
+
+.mood-badge-pill {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffd700;
 }
 
 .pill-label {
   font-size: 13px;
   font-weight: 400;
   color: #ffe0ed;
-  margin-left: 4px;
+  margin-left: 2px;
 }
 
 .icon-btn {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   justify-content: center;
   cursor: pointer;
   border: 1px solid rgba(255, 180, 210, 0.4);
-  font-size: 20px;
+  font-size: 18px;
   transition: transform 0.2s ease;
 }
 
@@ -501,7 +589,6 @@ kbd {
   pointer-events: none;
 }
 
-/* Dedicated Mobile Jump Button */
 .mobile-jump-btn {
   width: 76px;
   height: 76px;
@@ -553,10 +640,11 @@ kbd {
 
 /* Responsive tweaks */
 @media (max-width: 600px) {
-  .glow-title { font-size: 32px; }
-  .proposal-title { font-size: 38px; }
-  .rainbow-title { font-size: 38px; }
-  .glass-card { padding: 24px 20px; }
+  .glow-title { font-size: 30px; }
+  .proposal-title { font-size: 36px; }
+  .rainbow-title { font-size: 36px; }
+  .glass-card { padding: 22px 18px; }
+  .mood-grid { grid-template-columns: 1fr; }
   .proposal-actions { flex-direction: column; }
   .no-btn { position: relative; right: auto; width: 100%; }
 }
