@@ -85,13 +85,11 @@ let fireworks = [];
 
 // Dynamic Ground Height Calculator
 function getGroundHeightAt(x, z) {
-  let targetGroundY = -20; // Default void Y
+  let targetGroundY = -20;
 
-  // 1. Check Islands
   for (let cfg of islandConfigs) {
     const dist = Math.hypot(x - cfg.x, z - cfg.z);
     if (dist <= cfg.r) {
-      // Cylinder surface is cfg.y + 0.6, plus player offset 0.7
       const islandGround = cfg.y + 0.6 + 0.7;
       if (islandGround > targetGroundY) {
         targetGroundY = islandGround;
@@ -99,7 +97,6 @@ function getGroundHeightAt(x, z) {
     }
   }
 
-  // 2. Check Stepping Stones
   connections.forEach((conn) => {
     const steps = 4;
     for (let i = 1; i < steps; i++) {
@@ -573,6 +570,7 @@ function setupEventListeners() {
     }
   });
 
+  // Mobile Double Tap Listener
   window.addEventListener('touchstart', (e) => {
     if (!state.isGameActive || state.isModalOpen || state.stage !== 1) return;
 
@@ -588,6 +586,18 @@ function setupEventListeners() {
     }
     state.lastTouchTime = now;
   }, { passive: true });
+
+  // Dedicated Mobile Jump Button Event Listener
+  const mobileJumpBtn = document.getElementById('mobile-jump-btn');
+  if (mobileJumpBtn) {
+    const handleMobileJump = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerPlayerJump();
+    };
+    mobileJumpBtn.addEventListener('click', handleMobileJump);
+    mobileJumpBtn.addEventListener('touchstart', handleMobileJump);
+  }
 
   const startQuestAction = () => {
     if (window.soundEngine) {
@@ -851,26 +861,21 @@ function updatePlayerMovement(delta) {
     player.position.z = THREE.MathUtils.clamp(player.position.z, -22, 22);
   }
 
-  // Dynamic Ground Height at Player (x, z)
   const currentGroundY = getGroundHeightAt(player.position.x, player.position.z);
 
-  // Jump & Gravity Physics
   if (state.isJumping || player.position.y > currentGroundY + 0.1 || currentGroundY <= -10) {
     state.playerVelocityY += state.gravity * delta;
     player.position.y += state.playerVelocityY * delta;
 
-    // Check Landing on Island or Stepping Stone
     if (player.position.y <= currentGroundY && currentGroundY > -10 && state.playerVelocityY <= 0) {
       player.position.y = currentGroundY;
       state.playerVelocityY = 0;
       state.isJumping = false;
     }
   } else if (!state.isJumping && currentGroundY > -10) {
-    // Smooth Ground Adaptation when walking up/down islands
     player.position.y = THREE.MathUtils.lerp(player.position.y, currentGroundY, 0.25);
   }
 
-  // Respawn Safety: If player falls into the void below Y = -12
   if (player.position.y < -12) {
     const respawnGround = getGroundHeightAt(0, 6);
     player.position.set(0, respawnGround, 6);

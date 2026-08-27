@@ -29,7 +29,7 @@
       <div class="instructions-box">
         <p>🎮 <strong>Controls:</strong></p>
         <p>• <strong>Desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>Arrows</kbd> to move, <kbd>Space</kbd> to Jump!</p>
-        <p>• <strong>Mobile:</strong> Use touch joystick to move, <strong>Double-Tap</strong> to Jump!</p>
+        <p>• <strong>Mobile:</strong> Joystick to move, tap <strong>JUMP</strong> button to Jump!</p>
         <p>✨ <strong>Goal:</strong> Collect all 5 glowing Hearts of Praise to unlock the secret love letter!</p>
       </div>
       <button id="start-btn" class="primary-btn glow-btn" type="button">
@@ -117,13 +117,18 @@
     </div>
   </div>
 
-  <!-- Mobile Controls (Virtual Joystick) -->
+  <!-- Mobile Controls (Virtual Joystick & Jump Button) -->
   <div id="touch-controls" class="touch-controls hidden">
     <div id="joystick-zone">
       <div id="joystick-base">
         <div id="joystick-handle"></div>
       </div>
     </div>
+
+    <!-- Dedicated Mobile Jump Button -->
+    <button id="mobile-jump-btn" class="mobile-jump-btn" type="button">
+      <span>JUMP</span> 🦘
+    </button>
   </div>
 
   <!-- Audio Synthesizer & Game Scripts -->
