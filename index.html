@@ -139,14 +139,20 @@
     </div>
   </div>
 
-  <!-- Celebration Screen -->
+  <!-- Celebration Screen with WhatsApp Link -->
   <div id="celebration-overlay" class="modal-overlay hidden">
     <div class="glass-card celebration-card animate-pop">
       <div class="crown-icon">👑</div>
       <h1 class="rainbow-title">I Love You, Praise! 💖</h1>
       <p class="celebration-subtitle" id="celebration-subtitle">You just made me the happiest person in the universe! ✨</p>
       <div class="fireworks-badge">🎆 Forever & Always Yours 🎆</div>
-      <button id="replay-btn" class="primary-btn glow-btn" type="button" style="margin-top: 20px;">
+      
+      <!-- WhatsApp Message Action Button -->
+      <a id="whatsapp-share-btn" class="whatsapp-btn glow-btn" target="_blank" rel="noopener noreferrer" href="#">
+        <span>Send Your Answer on WhatsApp</span> 💬
+      </a>
+
+      <button id="replay-btn" class="secondary-btn" type="button" style="margin-top: 14px; width: 100%;">
         Choose Another Mood 🌸
       </button>
     </div>

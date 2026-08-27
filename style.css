@@ -8,6 +8,7 @@
   --accent-gold: #ffd700;
   --lavender: #b19ffb;
   --dark-purple: #230836;
+  --whatsapp-green: #25D366;
   --glass-bg: rgba(255, 255, 255, 0.18);
   --glass-border: rgba(255, 255, 255, 0.35);
   --glass-shadow: 0 8px 32px 0 rgba(199, 56, 120, 0.25);
@@ -92,7 +93,6 @@ html, body {
   overflow-y: auto;
 }
 
-/* Custom Scrollbar for Card */
 .glass-card::-webkit-scrollbar {
   width: 6px;
 }
@@ -140,7 +140,6 @@ html, body {
   font-weight: 300;
 }
 
-/* Emotion Grid */
 .mood-selector-container {
   margin-bottom: 22px;
   text-align: left;
@@ -263,6 +262,35 @@ kbd {
   transform: translateY(1px) scale(0.98);
 }
 
+/* WhatsApp Share Button */
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 18px;
+  position: relative;
+  z-index: 102;
+  pointer-events: auto;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.65);
+}
+
 .glow-btn {
   position: relative;
   overflow: hidden;
@@ -290,7 +318,7 @@ kbd {
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 14px 32px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   border-radius: 50px;
   cursor: pointer;

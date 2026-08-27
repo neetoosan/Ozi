@@ -1,6 +1,6 @@
 /**
  * Main 3D Game Engine for Praise's Love Website
- * Emotion-Driven Dynamic Experience
+ * Emotion-Driven Dynamic Experience + WhatsApp Response Integration
  * Works globally with THREE.js and soundEngine
  */
 
@@ -9,6 +9,7 @@
 // ============================================================================
 const CONFIG = {
   crushName: "Praise",
+  whatsappNumber: "2349055401776",
   moods: {
     // 💖 1. ROMANTIC & DREAMY
     romantic: {
@@ -57,7 +58,8 @@ const CONFIG = {
         p1: "Praise, my love for you runs deeper than the oceans and higher than the stars in this sky.",
         p2: "You are the poetry in my thoughts and the gentle rhythm in my heartbeat. Walking through life with you by my side would be my greatest blessing.",
         highlight: "Will you make me the happiest person in the universe and be mine forever? 💖"
-      }
+      },
+      whatsappMessage: "Hey! 💖 I just finished your 3D Quest and found all 5 hearts! My mood today is Romantic & Dreamy ✨ And my answer is YES! Forever & always! 🥰"
     },
 
     // 🌸 2. STRESSED / NEEDS COMFORT & WARMTH
@@ -107,7 +109,8 @@ const CONFIG = {
         p1: "Praise, you work so hard and give so much love to the world, but today I want you to feel deeply cherished.",
         p2: "I want to be the one who brings you peace after a long day, the one who listens to your quietest thoughts, and holds your hand through everything.",
         highlight: "Will you let me love, protect, and stand by your side forever? 🌸"
-      }
+      },
+      whatsappMessage: "Hey! 🌸 I just finished your 3D Quest and found all 5 hearts! I was feeling a bit stressed/needed comfort, and your messages warmed my heart so much. My answer is YES! 🤍"
     },
 
     // 🌟 3. JOYFUL & ENERGETIC
@@ -157,7 +160,8 @@ const CONFIG = {
         p1: "Praise, every single moment with you feels like an exciting adventure filled with pure sunshine!",
         p2: "Your joyful laugh is my favorite melody, and your happiness means everything to me. I want to celebrate you every single day.",
         highlight: "Let's make countless magical memories together. Will you be mine? 🌟"
-      }
+      },
+      whatsappMessage: "Hey! 🌟 I just completed your 3D Quest! I'm feeling super joyful & energetic today! Loved every single reason, and my answer is YES! ✨💖"
     },
 
     // 😜 4. PLAYFUL & MISCHIEVOUS
@@ -207,7 +211,8 @@ const CONFIG = {
         p1: "Praise, you've completely conquered my thoughts, and honestly, I wouldn't have it any other way!",
         p2: "You bring so much fun, color, and laughter into my world. There's no escaping this—we're an unbeatable team.",
         highlight: "Resistance is futile, Praise! Will you say YES and be my partner-in-crime forever? 😜💖"
-      }
+      },
+      whatsappMessage: "Hey! 😜 I just finished your 3D Quest and caught all 5 hearts! You're the real heart stealer here haha! My answer is YES! Partner in crime forever! 🎉💖"
     }
   }
 };
@@ -564,7 +569,6 @@ function createPlayer() {
 }
 
 function createAmbientParticles() {
-  // Clear previous particle systems
   particleSystems.forEach(ps => scene.remove(ps));
   particleSystems = [];
 
@@ -610,13 +614,11 @@ function applyMoodTheme(moodKey) {
 
   createAmbientParticles();
 
-  // Update HUD badge
   const hudEmoji = document.getElementById('hud-mood-emoji');
   if (hudEmoji) hudEmoji.textContent = m.emoji;
   const hudText = document.getElementById('hud-mood-text');
   if (hudText) hudText.textContent = m.name;
 
-  // Update sound engine mood
   if (window.soundEngine) {
     window.soundEngine.setMood(moodKey);
   }
@@ -765,7 +767,6 @@ function create3DFirework() {
 function setupEventListeners() {
   window.addEventListener('resize', onWindowResize);
 
-  // Desktop Keyboard Listener (WASD + Space for Jump)
   window.addEventListener('keydown', (e) => {
     if (!state.isGameActive || state.isModalOpen) return;
     switch (e.key.toLowerCase()) {
@@ -789,7 +790,6 @@ function setupEventListeners() {
     }
   });
 
-  // Mobile Double Tap Listener
   window.addEventListener('touchstart', (e) => {
     if (!state.isGameActive || state.isModalOpen || state.stage !== 1) return;
 
@@ -806,7 +806,6 @@ function setupEventListeners() {
     state.lastTouchTime = now;
   }, { passive: true });
 
-  // Mood Selector Cards Click Handler
   const moodCards = document.querySelectorAll('.mood-card');
   moodCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -819,7 +818,6 @@ function setupEventListeners() {
     });
   });
 
-  // Dedicated Mobile Jump Button Event Listener
   const mobileJumpBtn = document.getElementById('mobile-jump-btn');
   if (mobileJumpBtn) {
     const handleMobileJump = (e) => {
@@ -831,7 +829,6 @@ function setupEventListeners() {
     mobileJumpBtn.addEventListener('touchstart', handleMobileJump);
   }
 
-  // Start Quest Action function
   const startQuestAction = () => {
     if (window.soundEngine) {
       window.soundEngine.playClickSFX();
@@ -922,14 +919,30 @@ function setupEventListeners() {
     noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); dodgeNoBtn(); });
   }
 
+  // YES! Proposal Button Click -> Open WhatsApp with Mood Message
   const yesBtn = document.getElementById('yes-btn');
   if (yesBtn) {
     yesBtn.addEventListener('click', () => {
       if (window.soundEngine) window.soundEngine.playVictoryFanfare();
+      
       const propModal = document.getElementById('proposal-modal');
       if (propModal) propModal.classList.add('hidden');
       const celOverlay = document.getElementById('celebration-overlay');
       if (celOverlay) celOverlay.classList.remove('hidden');
+
+      // WhatsApp Dynamic URL Construction
+      const m = CONFIG.moods[state.currentMood] || CONFIG.moods.romantic;
+      const waMsg = m.whatsappMessage;
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(waMsg)}`;
+
+      // Update link on celebration screen
+      const waShareBtn = document.getElementById('whatsapp-share-btn');
+      if (waShareBtn) {
+        waShareBtn.href = whatsappUrl;
+      }
+
+      // Automatically launch WhatsApp chat
+      window.open(whatsappUrl, '_blank');
     });
   }
 
