@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ff4d8d">
   <title>A Special Quest for Ozioma Goodness Ezenyi 💖</title>
+  
+  <!-- PWA Manifest & Mobile Web App Capable -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="For Ozioma 💖">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +27,23 @@
   <!-- 3D Canvas -->
   <div id="canvas-container"></div>
 
-  <!-- Audio / Start Overlay with Emotion Selector -->
+  <!-- Audio / Start Overlay with Emotion Selector & Daily Love Quote Banner -->
   <div id="start-overlay" class="overlay-screen active">
     <div class="glass-card start-card">
       <div class="heart-pulse-icon">💖</div>
       <h1 class="glow-title">For Ozioma</h1>
       <p class="subtitle">An Interactive 3D Journey Made With All My Love for Ozioma Goodness Ezenyi</p>
+
+      <!-- Daily Love Note Feature Banner -->
+      <div class="daily-quote-banner" id="daily-quote-trigger">
+        <div class="daily-quote-header">
+          <span class="daily-quote-tag">📜 Today's Daily Love Note</span>
+          <span class="daily-quote-date" id="daily-quote-date">Today</span>
+        </div>
+        <p class="daily-quote-text" id="daily-quote-preview">
+          "Loading your special message for today..."
+        </p>
+      </div>
 
       <!-- Emotion Selector Grid -->
       <div class="mood-selector-container">
@@ -54,11 +72,16 @@
         </div>
       </div>
 
-      <div class="instructions-box">
+      <!-- Notification Reminders Toggle Button -->
+      <button id="enable-notif-btn" class="secondary-btn notif-toggle-btn" type="button">
+        <span>🔔 Enable Daily Love Reminders (4x a day)</span>
+      </button>
+
+      <div class="instructions-box" style="margin-top: 14px;">
         <p>🎮 <strong>Controls:</strong></p>
         <p>• <strong>Desktop:</strong> Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>Arrows</kbd> to move, <kbd>Space</kbd> to Jump!</p>
         <p>• <strong>Mobile:</strong> Joystick to move, tap <strong>JUMP</strong> button to Jump!</p>
-        <p>✨ <strong>Goal:</strong> Collect all 5 glowing Hearts of Love to unlock the secret love letter!</p>
+        <p>✨ <strong>Today's Quest:</strong> Collect all 5 fresh Hearts of Love to unlock today's love letter!</p>
       </div>
 
       <button id="start-btn" class="primary-btn glow-btn" type="button">
@@ -80,12 +103,45 @@
         <span id="hud-mood-emoji">💖</span>
         <span id="hud-mood-text" class="pill-label">Romantic</span>
       </div>
+      <!-- Daily Note Pill -->
+      <button class="glass-pill icon-pill-btn" id="hud-quote-btn" title="Today's Love Note" type="button">
+        <span>📜 Daily Note</span>
+      </button>
     </div>
 
-    <!-- Music Toggle -->
-    <button id="music-btn" class="glass-pill icon-btn" title="Toggle Music" type="button">
-      <span id="music-icon">🎵</span>
-    </button>
+    <!-- HUD Right Group: Reminders & Music Toggle -->
+    <div class="hud-right-group">
+      <button id="hud-notif-btn" class="glass-pill icon-btn" title="Daily Love Reminders" type="button">
+        <span id="notif-icon">🔔</span>
+      </button>
+      <button id="music-btn" class="glass-pill icon-btn" title="Toggle Music" type="button">
+        <span id="music-icon">🎵</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Daily Quote Modal -->
+  <div id="daily-quote-modal" class="modal-overlay hidden">
+    <div class="glass-card modal-card animate-pop">
+      <button class="close-modal-btn" id="close-quote-btn" type="button">&times;</button>
+      <div class="card-badge" id="quote-modal-date">Today's Love Note</div>
+      <div class="card-icon">💌</div>
+      <h2 class="card-title">A Daily Thought for Ozioma</h2>
+      <div class="love-letter-paper" style="margin-bottom: 20px;">
+        <p class="letter-text" id="quote-modal-body" style="font-size: 17px; text-align: center;">
+          "Loving you is the sweetest blessing in the world..."
+        </p>
+      </div>
+      <div class="time-slots-grid">
+        <div class="time-slot-chip">🌅 Morning (8 AM)</div>
+        <div class="time-slot-chip">☀️ Afternoon (1 PM)</div>
+        <div class="time-slot-chip">🌙 Night (8 PM)</div>
+        <div class="time-slot-chip">🌌 Midnight (12 AM)</div>
+      </div>
+      <button id="quote-modal-close-btn" class="primary-btn" type="button" style="margin-top: 18px;">
+        Close Note 🌸
+      </button>
+    </div>
   </div>
 
   <!-- Dialogue / Reason Card Modal -->
@@ -172,8 +228,10 @@
     </button>
   </div>
 
-  <!-- Audio Synthesizer & Game Scripts -->
+  <!-- Scripts -->
   <script src="audio.js"></script>
+  <script src="quotes.js"></script>
+  <script src="notifications.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

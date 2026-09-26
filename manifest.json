@@ -1,0 +1,18 @@
+{
+  "name": "A Special Quest for Ozioma 💖",
+  "short_name": "For Ozioma 💖",
+  "description": "An interactive 3D love game and daily love notes for Ozioma Goodness Ezenyi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f051d",
+  "theme_color": "#ff4d8d",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

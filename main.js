@@ -1,11 +1,11 @@
 /**
  * Main 3D Game Engine for Ozioma Goodness Ezenyi's Love Website
- * Emotion-Driven Dynamic Experience + WhatsApp Response Integration
- * Works globally with THREE.js and soundEngine
+ * Emotion-Driven Dynamic Experience + Daily Rotating Quotes + Push Notifications
+ * Works globally with THREE.js, soundEngine, DAILY_QUOTES_ENGINE, and loveNotificationManager
  */
 
 // ============================================================================
-// Personalization Configuration for Ozioma Goodness Ezenyi (20 Reasons & 4 Love Letters)
+// Personalization Configuration for Ozioma Goodness Ezenyi
 // ============================================================================
 const CONFIG = {
   crushFullName: "Ozioma Goodness Ezenyi",
@@ -23,38 +23,6 @@ const CONFIG = {
       rimColor: 0xff4d8d,
       particleColor: 0xff75a0,
       particleSize: 0.45,
-      reasons: [
-        {
-          number: "Heart #1",
-          heading: "Your Starlight Eyes ✨",
-          emoji: "💖",
-          text: "Ozioma, every time I look into your eyes, the whole universe fades into the background and all I see is pure magic."
-        },
-        {
-          number: "Heart #2",
-          heading: "Your Gentle Warmth 🌸",
-          emoji: "🌹",
-          text: "The kindness and tenderness in your heart, Ozioma Goodness, make the world feel softer, warmer, and endlessly beautiful."
-        },
-        {
-          number: "Heart #3",
-          heading: "Our Shared Moments 🎶",
-          emoji: "💫",
-          text: "Every conversation, every quiet second, and every laugh with you, Ozi, is a memory I hold dear to my heart."
-        },
-        {
-          number: "Heart #4",
-          heading: "Your Enchanting Grace 👑",
-          emoji: "🦋",
-          text: "You carry yourself with such natural elegance, Goodness, and a sweetness that captivates me more and more every day."
-        },
-        {
-          number: "Heart #5",
-          heading: "My Favorite Dream 💎",
-          emoji: "🎁",
-          text: "Ozioma, you are the dream I never want to wake up from. Loving you is the easiest and most natural thing in the world."
-        }
-      ],
       letter: {
         p1: "Ozioma Goodness Ezenyi, my love for you runs deeper than the oceans and higher than all the stars in this sky.",
         p2: "You are the poetry in my thoughts and the gentle rhythm in my heartbeat. Walking through life with you by my side would be my greatest blessing.",
@@ -74,38 +42,6 @@ const CONFIG = {
       rimColor: 0xff9966,
       particleColor: 0xffc4a8,
       particleSize: 0.5,
-      reasons: [
-        {
-          number: "Heart #1",
-          heading: "Take a Deep Breath 🍃",
-          emoji: "🌸",
-          text: "Ozioma, pause for a second and breathe. You carry so much with grace, but it's okay to let go and just rest."
-        },
-        {
-          number: "Heart #2",
-          heading: "You Are More Than Enough ☕",
-          emoji: "🧸",
-          text: "On tough days, never forget how strong, capable, and wonderfully made you are, Goodness. I believe in you always."
-        },
-        {
-          number: "Heart #3",
-          heading: "A Safe Harbor for You 🏡",
-          emoji: "🕯️",
-          text: "Whenever the world feels loud or overwhelming, Ozi, my heart will always be a warm, quiet, safe place for you."
-        },
-        {
-          number: "Heart #4",
-          heading: "Your Soft Heart 🕊️",
-          emoji: "🌷",
-          text: "Your sensitivity and empathy are your superpowers, Ozioma. Don't let heavy days dim the gentle light inside you."
-        },
-        {
-          number: "Heart #5",
-          heading: "I Am Here For You 🤝",
-          emoji: "🤍",
-          text: "Through the storms, rainy days, or sunshine, Ozioma Goodness, you will never have to walk alone. I'm right beside you."
-        }
-      ],
       letter: {
         p1: "Ozioma Goodness Ezenyi, you work so hard and give so much love to the world, but today I want you to feel deeply cherished.",
         p2: "I want to be the one who brings you peace after a long day, the one who listens to your quietest thoughts, and holds your hand through everything.",
@@ -125,38 +61,6 @@ const CONFIG = {
       rimColor: 0xffcc00,
       particleColor: 0xffd700,
       particleSize: 0.45,
-      reasons: [
-        {
-          number: "Heart #1",
-          heading: "Your Electric Energy ⚡",
-          emoji: "🌟",
-          text: "Ozioma, your bright spirit and vibrant energy make the whole world feel alive, colorful, and fun!"
-        },
-        {
-          number: "Heart #2",
-          heading: "Sunshine in Human Form ☀️",
-          emoji: "🌻",
-          text: "Your radiant smile is contagious, Goodness! The moment you walk into a room, everyone's day gets ten times better."
-        },
-        {
-          number: "Heart #3",
-          heading: "Your Inspiring Passion 🔥",
-          emoji: "🎯",
-          text: "Watching you get excited about things you love is one of my favorite sights in the world, Ozi. You inspire me!"
-        },
-        {
-          number: "Heart #4",
-          heading: "Endless Good Vibes 🌈",
-          emoji: "🎈",
-          text: "Being around you, Ozioma, is like an adventure full of warmth, laughter, and unforgettable moments."
-        },
-        {
-          number: "Heart #5",
-          heading: "You are Pure Gold 👑",
-          emoji: "✨",
-          text: "Ozioma Goodness Ezenyi, there is nobody on this planet quite like you. You shine like the brightest star in the sky!"
-        }
-      ],
       letter: {
         p1: "Ozioma, every single moment with you feels like an exciting adventure filled with pure sunshine!",
         p2: "Your joyful laugh is my favorite melody, and your happiness means everything to me. I want to celebrate you every single day, Goodness.",
@@ -176,38 +80,6 @@ const CONFIG = {
       rimColor: 0x00d4ff,
       particleColor: 0xff3df2,
       particleSize: 0.5,
-      reasons: [
-        {
-          number: "Heart #1",
-          heading: "Certified Heart Stealer 🕵️‍♀️",
-          emoji: "😜",
-          text: "Excuse me Ozioma, but you owe me a heart—because you stole mine the very first second I saw you!"
-        },
-        {
-          number: "Heart #2",
-          heading: "Our Witty Banter 💬",
-          emoji: "🤹‍♀️",
-          text: "I love our teasing, playful jokes, Goodness, and how you always keep me on my toes with your quick wit."
-        },
-        {
-          number: "Heart #3",
-          heading: "Dangerously Cute 🥰",
-          emoji: "🎀",
-          text: "It honestly should be illegal to look that cute, Ozi, while also being so ridiculously smart and funny."
-        },
-        {
-          number: "Heart #4",
-          heading: "My Favorite Distraction 📱",
-          emoji: "🎮",
-          text: "I could be doing a million important things, but thinking about you, Ozioma, always wins effortlessly!"
-        },
-        {
-          number: "Heart #5",
-          heading: "10/10 Would Choose You Again 🏆",
-          emoji: "🎉",
-          text: "If I had a million lifetimes, I'd still spend every single one chasing after your heart, Ozioma Goodness!"
-        }
-      ],
       letter: {
         p1: "Ozioma Goodness Ezenyi, you've completely conquered my thoughts, and honestly, I wouldn't have it any other way!",
         p2: "You bring so much fun, color, and laughter into my world. There's no escaping this—we're an unbeatable team, Ozi.",
@@ -251,7 +123,8 @@ const state = {
   isJumping: false,
   gravity: -24,
   jumpForce: 9.5,
-  lastTouchTime: 0
+  lastTouchTime: 0,
+  todayReasons: []
 };
 
 // Three.js Core Variables
@@ -309,12 +182,16 @@ function init() {
   const container = document.getElementById('canvas-container');
   if (!container) return;
 
-  // 1. Scene
+  // 1. Initialize Daily Quotes Preview
+  updateDailyQuoteBanner();
+  refreshTodayReasons();
+
+  // 2. Scene
   scene = new THREE.Scene();
   scene.background = new THREE.Color(CONFIG.moods.romantic.skyColor);
   scene.fog = new THREE.FogExp2(CONFIG.moods.romantic.fogColor, 0.022);
 
-  // 2. Camera
+  // 3. Camera
   camera = new THREE.PerspectiveCamera(
     55,
     window.innerWidth / window.innerHeight,
@@ -323,7 +200,7 @@ function init() {
   );
   camera.position.set(0, 18, 26);
 
-  // 3. Renderer
+  // 4. Renderer
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -335,23 +212,44 @@ function init() {
 
   clock = new THREE.Clock();
 
-  // 4. Lights
+  // 5. Lights
   setupLighting();
 
-  // 5. Build 3D World (Floating Islands, Trees, Flowers, Collectibles)
+  // 6. Build 3D World (Floating Islands, Trees, Flowers, Collectibles)
   buildWorld();
 
-  // 6. Create Player Star Avatar
+  // 7. Create Player Star Avatar
   createPlayer();
 
-  // 7. Ambient Particle Stars & Floating Elements
+  // 8. Ambient Particle Stars & Floating Elements
   createAmbientParticles();
 
-  // 8. Event Listeners
+  // 9. Event Listeners
   setupEventListeners();
 
-  // 9. Start Render Loop
+  // 10. Start Render Loop
   animate();
+}
+
+function updateDailyQuoteBanner() {
+  if (window.DAILY_QUOTES_ENGINE) {
+    const today = window.DAILY_QUOTES_ENGINE.getTodayFeaturedQuote();
+    const dateEl = document.getElementById('daily-quote-date');
+    if (dateEl) dateEl.textContent = today.dateStr;
+    const prevEl = document.getElementById('daily-quote-preview');
+    if (prevEl) prevEl.textContent = `"${today.quote}"`;
+
+    const modalDate = document.getElementById('quote-modal-date');
+    if (modalDate) modalDate.textContent = `${today.dateStr} (Day #${today.dayNumber})`;
+    const modalBody = document.getElementById('quote-modal-body');
+    if (modalBody) modalBody.textContent = `"${today.quote}"`;
+  }
+}
+
+function refreshTodayReasons() {
+  if (window.DAILY_QUOTES_ENGINE) {
+    state.todayReasons = window.DAILY_QUOTES_ENGINE.getTodayInGameHearts(state.currentMood);
+  }
 }
 
 // Lighting Setup
@@ -602,6 +500,7 @@ function createAmbientParticles() {
 // Apply Mood Theme to 3D World in Real-Time
 function applyMoodTheme(moodKey) {
   state.currentMood = moodKey;
+  refreshTodayReasons();
   const m = CONFIG.moods[moodKey] || CONFIG.moods.romantic;
 
   if (scene) {
@@ -809,6 +708,7 @@ function setupEventListeners() {
     state.lastTouchTime = now;
   }, { passive: true });
 
+  // Mood Selector Cards Click Handler
   const moodCards = document.querySelectorAll('.mood-card');
   moodCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -821,6 +721,51 @@ function setupEventListeners() {
     });
   });
 
+  // Daily Quote Banner & HUD Button Click Handler
+  const openDailyQuote = () => {
+    if (window.soundEngine) window.soundEngine.playClickSFX();
+    updateDailyQuoteBanner();
+    const modal = document.getElementById('daily-quote-modal');
+    if (modal) modal.classList.remove('hidden');
+  };
+
+  const bannerTrigger = document.getElementById('daily-quote-trigger');
+  if (bannerTrigger) bannerTrigger.addEventListener('click', openDailyQuote);
+
+  const hudQuoteBtn = document.getElementById('hud-quote-btn');
+  if (hudQuoteBtn) hudQuoteBtn.addEventListener('click', openDailyQuote);
+
+  const closeQuote = () => {
+    if (window.soundEngine) window.soundEngine.playClickSFX();
+    const modal = document.getElementById('daily-quote-modal');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  const closeQuoteBtn = document.getElementById('close-quote-btn');
+  if (closeQuoteBtn) closeQuoteBtn.addEventListener('click', closeQuote);
+
+  const quoteModalCloseBtn = document.getElementById('quote-modal-close-btn');
+  if (quoteModalCloseBtn) quoteModalCloseBtn.addEventListener('click', closeQuote);
+
+  // Notification Reminder Permission Handlers
+  const handleNotifEnable = async () => {
+    if (window.soundEngine) window.soundEngine.playClickSFX();
+    if (window.loveNotificationManager) {
+      const granted = await window.loveNotificationManager.requestPermission();
+      const notifBtn = document.getElementById('enable-notif-btn');
+      if (notifBtn) {
+        notifBtn.innerHTML = granted ? '<span>✅ Reminders Active (4x a day)</span>' : '<span>🔔 Enable Daily Love Reminders</span>';
+      }
+    }
+  };
+
+  const enableNotifBtn = document.getElementById('enable-notif-btn');
+  if (enableNotifBtn) enableNotifBtn.addEventListener('click', handleNotifEnable);
+
+  const hudNotifBtn = document.getElementById('hud-notif-btn');
+  if (hudNotifBtn) hudNotifBtn.addEventListener('click', handleNotifEnable);
+
+  // Dedicated Mobile Jump Button Event Listener
   const mobileJumpBtn = document.getElementById('mobile-jump-btn');
   if (mobileJumpBtn) {
     const handleMobileJump = (e) => {
@@ -832,6 +777,7 @@ function setupEventListeners() {
     mobileJumpBtn.addEventListener('touchstart', handleMobileJump);
   }
 
+  // Start Quest Action function
   const startQuestAction = () => {
     if (window.soundEngine) {
       window.soundEngine.playClickSFX();
@@ -1143,8 +1089,13 @@ function collectHeart(item) {
   const countEl = document.getElementById('collected-count');
   if (countEl) countEl.textContent = state.collectedHearts;
 
-  const currentMoodData = CONFIG.moods[state.currentMood] || CONFIG.moods.romantic;
-  const reason = currentMoodData.reasons[item.index];
+  // Use today's dynamically loaded reason
+  const reason = state.todayReasons[item.index] || {
+    number: `Heart #${item.index + 1}`,
+    emoji: "💖",
+    heading: "A Beautiful Reason",
+    text: "You make every day brighter, Ozioma!"
+  };
 
   if (reason) {
     const numEl = document.getElementById('card-number');
