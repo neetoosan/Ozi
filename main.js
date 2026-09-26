@@ -10,7 +10,7 @@
 const CONFIG = {
   crushFullName: "Ozioma Goodness Ezenyi",
   crushName: "Ozioma",
-  whatsappNumber: "2349055401776",
+  whatsappNumber: "2348061618700",
   moods: {
     // 💖 1. ROMANTIC & DREAMY
     romantic: {
